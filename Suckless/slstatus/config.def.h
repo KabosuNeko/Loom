@@ -5,7 +5,7 @@
 const unsigned int interval = 1000;
 
 /* text to show if no value can be retrieved */
-static const char unknown_str[] = "?";
+static const char unknown_str[] = "";
 
 /* maximum output string length */
 #define MAXLEN 2048
@@ -68,6 +68,7 @@ static const struct arg args[] = {
     // uses https://dwm.suckless.org/patches/status2d patch ^c#[HEX]^ to set color and ^d^ to reset color
 
 /* function       format                          argument */
+{ cat,           "%s",              "/tmp/rectime" },
 { cpu_perc,      " ^C9^ %s%%^d^ ",              NULL },
 { ram_used,      "^C10^󰫗 %s^d^ ",                NULL },
 { keymap,        "^C13^ %s^d^ ",                NULL },

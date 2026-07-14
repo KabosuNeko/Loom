@@ -131,6 +131,9 @@ static const Key keys[] = {
     { MODKEY,                       XK_s,      spawn,          SHCMD("~/.local/bin/screenshot.sh") },
     { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("~/.local/bin/screenshot.sh full") },
 
+    /* Screen recorder */
+    { MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("~/.local/bin/recorder.sh") },
+
     /* Rofi Scripts */
     { MODKEY, XK_r, spawn, SHCMD("~/.local/bin/repos.sh") },
 	{ MODKEY, XK_o, spawn, SHCMD("~/.local/bin/tmux.sh") },
