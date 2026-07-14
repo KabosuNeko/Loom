@@ -42,4 +42,3 @@ mpv
 python-pywal16
 clipmenu
 firefox
-cachyos-firefox-settings
