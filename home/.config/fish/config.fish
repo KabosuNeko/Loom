@@ -151,11 +151,6 @@ function copy
     end
 end
 
-#Screen Recoder
-function rec
-    ffmpeg -video_size 1920x1080 -framerate 60 -f x11grab -i :0.0 -c:v h264_nvenc -preset p6 -cq 20 ~/Videos/screencast_(date +%F_%H-%M-%S).mp4
-end
-
 
 ## Useful aliases
 # Replace ls with eza

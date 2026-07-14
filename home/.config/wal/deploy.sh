@@ -7,8 +7,10 @@ mkdir -p "$HOME/.config/dunst"
 CACHE="${cache_dir:-$HOME/.cache/wal}"
 
 [ -f "$CACHE/dunstrc" ] && cp "$CACHE/dunstrc" "$HOME/.config/dunst/dunstrc" && killall dunst; dunst &
+[ -f "$CACHE/colors-vesktop.css" ] && cat "$CACHE/colors-vesktop.css" > "$HOME/.config/vesktop/themes/pywal.theme.css"
 
 xrdb -merge "$CACHE/colors.Xresources"
 [ -f "$CACHE/xrdb_extra" ] && xrdb -merge "$CACHE/xrdb_extra"
+
 
 command -v xdotool >/dev/null 2>&1 && xdotool key --clearmodifiers super+F5
