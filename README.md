@@ -135,6 +135,7 @@ Vanilla — no patches, only basic color config.
 | `Super + Shift + Q` | Quit dwm |
 | `Super + S`     | Take Screenshot |
 | `Super + Shift + S`     | Take Screenshot (fullscreen) |
+| `Super + Shift + R`     | Screen recorder |
 | `Super + B`     | Open Bookmarks (dmenu) |
 | `Super + R`     | Open Projects (dmenu) |
 | `Super + O`     | Tmux Sessions (dmenu) |
