@@ -11,8 +11,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # >>> wallpaper.sh managed >>>
-feh --bg-fill "/home/mibanh/Pictures/Wallpapers/Lena.jpg" &
-wal -n -o "$HOME/.config/wal/deploy.sh" -i "/home/mibanh/Pictures/Wallpapers/Lena.jpg"
+feh --bg-fill "/home/mibanh/Pictures/Wallpapers/sunset.jpg" &
+wal -n -o "$HOME/.config/wal/deploy.sh" -i "/home/mibanh/Pictures/Wallpapers/sunset.jpg"
 # <<< wallpaper.sh managed <<<
 
 picom &
