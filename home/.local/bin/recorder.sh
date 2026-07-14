@@ -9,8 +9,10 @@ record() {
     ENCODER="-c:v libx264 -preset ultrafast -crf 20"
   fi
 
+  AUDIO_SOURCE="$(pactl get-default-sink).monitor"
+
   ffmpeg -video_size 1920x1080 -framerate 60 -f x11grab -i :0.0 \
-         -f pulse -i default \
+         -f pulse -i "$AUDIO_SOURCE" \
          $ENCODER -c:a aac -b:a 192k \
          "$OUTPUT_FILE" &> /dev/null &
 
