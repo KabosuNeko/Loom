@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
-# Exit Menu using dmenu
-
-OPTIONS=" Lock\n󰒲 Suspend\n Reboot\n⏻ PowerOff\n󰍃 LogOut"
-
-SELECTED=$(printf '%b' "$OPTIONS" | dmenu -i -c -l 5 -p "Power Menu:")
+OPTIONS=" Lock\n󰒲 Suspend\n󰤄 Hibernate\n Reboot\n⏻ PowerOff\n󰍃 LogOut"
+SELECTED=$(printf '%b' "$OPTIONS" | dmenu -i -c -l 6 -p "Power Menu:")
 ACTION=$(echo "$SELECTED" | awk '{print $2}')
 
 case "$ACTION" in
@@ -13,6 +10,9 @@ case "$ACTION" in
         ;;
     Suspend)
         systemctl suspend
+        ;;
+    Hibernate)
+        systemctl hibernate
         ;;
     Reboot)
         systemctl reboot
