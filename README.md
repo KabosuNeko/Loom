@@ -149,5 +149,5 @@ Vanilla — no patches, only basic color config.
 If you are looking to add more configurations or expand your setup, you can check out my other specific config repositories here:
 
 - [MPV](https://github.com/KabosuNeko/mpv-config)
-- [FireFox CSS](https://github.com/KabosuNeko/firefox-css)
+- [FireFox Config](https://github.com/KabosuNeko/YuzuFox/tree/main)
 - [Wallpapers](https://github.com/KabosuNeko/Wallpapers)
