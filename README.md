@@ -29,7 +29,7 @@ cd Loom
 
 The script automates everything:
 1. Installs xlibre and all dependencies from `pkg.txt` (official repo + AUR via yay)
-2. Copies dotfiles to `~/.config`, `~/.local/bin`
+2. Deploys dotfiles via GNU Stow (symlinks into `~/.config`, `~/.local/bin`, etc.)
 3. Builds and installs `dwm`,`dmenu`, `slstatus`, `st`, `slock` from source
 
 Start your session with `startx` to launch dwm.
@@ -71,15 +71,26 @@ All dependencies are listed in [`pkg.txt`](pkg.txt).
 ### Dotfiles & Build
 
 ```bash
-# Copy configs
-cp -r home/.config/* ~/.config/
-cp -r home/.local/* ~/.local/
-cp .xinitrc ~/.xinitrc
+# Deploy configs via GNU Stow (symlinks)
+stow --restow --no-folding -t ~ home
 
 # Build suckless tools
 for tool in dwm dmenu slstatus st slock; do
     sudo make -C "Suckless/$tool" clean install
 done
+```
+
+### Daily Management
+
+```bash
+# Update after pulling changes:
+cd ~/Loom && git pull && stow --restow --no-folding -t ~ home
+
+# Uninstall (removes symlinks, your files are untouched):
+cd ~/Loom && stow -D -t ~ home
+
+# Preview what would change (dry-run):
+cd ~/Loom && stow -n -t ~ home
 ```
 
 ## Patches

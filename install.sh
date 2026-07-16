@@ -72,17 +72,26 @@ else
     echo ":: yay not found — skipping package installation."
 fi
 
-# ─── Install dotfiles ────────────────────────────────────────────────────
-read -p "===> Install dotfiles? (y/n): " confirm
+# ─── Deploy dotfiles via GNU Stow ──────────────────────────────────────
+read -p "===> Deploy dotfiles via GNU Stow (symlinks)? (y/n): " confirm
 if [[ $confirm == [yY] ]]; then
-    echo "==> Installing dotfiles..."
-    mkdir -p "$HOME/.config" "$HOME/.local/bin" "$HOME/Pictures"
-    cp -r "$DOTDIR/home/.config/"* "$HOME/.config/" 2>/dev/null || true
-    cp -r "$DOTDIR/home/.local/bin/"* "$HOME/.local/bin/" 2>/dev/null || true
-    cp "$DOTDIR/.xinitrc" "$HOME/.xinitrc" 2>/dev/null || true
-    cp "$DOTDIR/.xprofile" "$HOME/.xprofile" 2>/dev/null || true
+    echo ":: Checking for stow..."
+    if ! command -v stow &>/dev/null; then
+        echo "XXX [ERROR] stow is not installed. Install it first (it's in pkg.txt)." >&2
+        exit 1
+    fi
+    echo ":: Deploying configs and scripts to \$HOME via stow..."
+    cd "$DOTDIR"
+    if stow --restow --no-folding -t "$HOME" home; then
+        echo ":: Stow deployment complete."
+    else
+        echo "XXX [ERROR] Stow deployment failed." >&2
+        exit 1
+    fi
+    echo ":: To uninstall later:  cd $DOTDIR && stow -D -t \$HOME home"
+    echo ":: To update later:     cd $DOTDIR && stow --restow -t \$HOME home"
 else
-    echo ":: Skipping dotfiles installation."
+    echo ":: Skipping dotfiles deployment."
 fi
 
 # ─── Wallpapers ────────────────────────────────────────────────────

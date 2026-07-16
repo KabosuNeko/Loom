@@ -1,5 +1,6 @@
 git
 base-devel
+stow
 libx11
 libxft
 libxinerama
