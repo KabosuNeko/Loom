@@ -94,6 +94,7 @@ done
 | **warp** | Focus warp to client on switch |
 | **attachaside** | New clients attach to stack side instead of master |
 | **actualfullscreen** | Real fullscreen |
+| **systray** | System tray |
 
 ### st
 | Patch | Description |
