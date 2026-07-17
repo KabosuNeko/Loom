@@ -5,7 +5,6 @@ if test -f ~/.cache/wal/colors.fish
 end
 
 if set -q foreground
-    # ─── Cú pháp dòng lệnh (Syntax Highlighting) ───
     set fish_color_normal $foreground
     set fish_color_command $color4
     set fish_color_keyword $color5
@@ -30,7 +29,6 @@ if set -q foreground
     set fish_color_cancel $color1 '--reverse'
     set fish_color_option $color3
 
-    # ─── Menu gợi ý (Pager) ───
     set fish_pager_color_background $background
     set fish_pager_color_completion $foreground
     set fish_pager_color_description $color8
@@ -51,24 +49,49 @@ end
 
 
 ## Set values
-#Greeting
+
 function fish_greeting
     set -l current_time (date +"%-I:%M%P")
     set -l uptime_text (uptime -p | string replace -r '^up ' '')
     set -l kernel (uname -r)
 
-    set -l info "It's $current_time $uptime_text $kernel"
+    set_color -b black
+    printf " "
 
-    # Chỉ cần gọi biến vì đã nạp ở đầu file
-    if set -q color0
-        set_color -b $color0 $color4
-    else
-        set_color -b black brwhite
-    end
+    set_color brblack
+    printf "it's  "
+    set_color blue
+    printf "%s  " $current_time
+    set_color green
+    printf "%s  " "$uptime_text"
+    set_color magenta
+    printf "%s " $kernel
 
-    printf " %s " "$info"
     set_color normal
     printf "\n"
+end
+
+function fish_prompt
+    echo
+
+    set -l shell_path "/bin/fish"
+    set -l user_name "$USER"
+    set -l cwd (prompt_pwd)
+
+    set_color -b black brwhite
+    printf " %s " $shell_path
+
+    set_color -b brblack brwhite
+    printf " %s " $user_name
+
+    set_color -b blue black
+    printf " %s " $cwd
+
+    set_color normal
+    set_color blue
+    printf " ❯ "
+
+    set_color normal
 end
 
 
@@ -208,7 +231,6 @@ end
 
 ssh-add -l > /dev/null 2>&1
 or ssh-add ~/.ssh/id_ed25519 > /dev/null 2>&1
-
 
 # Bạn có thể tạo alias trong shell (như .bashrc hoặc .zshrc)
 alias sudachi='bash -c "$(curl -sL https://raw.githubusercontent.com/KabosuNeko/sudachi/main/sudachi.sh)"'
