@@ -51,6 +51,7 @@ end
 ## Set values
 
 function fish_greeting
+    echo
     set -l current_time (date +"%-I:%M%P")
     set -l uptime_text (uptime -p | string replace -r '^up ' '')
     set -l kernel (uname -r)
@@ -68,7 +69,7 @@ function fish_greeting
     printf "%s " $kernel
 
     set_color normal
-    printf "\n"
+    echo
 end
 
 function fish_prompt
