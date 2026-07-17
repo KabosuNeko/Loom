@@ -5,6 +5,7 @@ libx11
 libxft
 libxinerama
 xorg-xinit
+xorg-xset
 xautolock
 xdotool
 fish
