@@ -23,5 +23,6 @@ fcitx5 -d &
 redshift &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 xautolock -time 10 -notify 10 -notifier "notify-send 'Locking in 10s'" -locker "slock" -detectsleep &
+xset r rate 200 35
 
 exec dwm
