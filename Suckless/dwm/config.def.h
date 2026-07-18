@@ -22,7 +22,7 @@ static char normbordercolor[] = "#3b4252";
 static char normfgcolor[] = "#d8dee9";
 static char selfgcolor[] = "#eceff4";
 static char selbordercolor[] = "#81a1c1";
-static char selbgcolor[] = "#81a1c1";
+static char selbgcolor[] = "#2e3440";
 
 static char *colors[][3] = {
 	/*               fg            bg            border   */
@@ -55,8 +55,8 @@ static char *termcolor[] = {
 };
 
 /* tagging */
-//static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tags[] = { "󰔈", "", "󰻝", "", "", "", "", "", "" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+//static const char *tags[] = { "󰔈", "", "󰻝", "", "", "", "", "", "" };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
