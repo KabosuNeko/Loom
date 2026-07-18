@@ -12,9 +12,9 @@ My personal suckless builds and dwm dots files. This setup is built around **dwm
 
 ## Preview
 
-| <img width="1920" height="1080" alt="screenshot_1" src="https://github.com/user-attachments/assets/cd080941-8cdc-40bc-b966-8a6bd0fd8f6b" /> | <img width="1920" height="1080" alt="screenshot_2" src="https://github.com/user-attachments/assets/6a85d096-e507-4301-9988-163abfd27734" /> |
+| <img width="1920" height="1080" alt="screenshot_1" src="https://github.com/user-attachments/assets/4d43ec21-a630-4043-bdc1-2e26f27f2533" /> | <img width="1920" height="1080" alt="screenshot_2" src="https://github.com/user-attachments/assets/f5e912a0-c956-44cb-bfc9-3a5dc75275f0" /> |
 |---|---|
-| <img width="1920" height="1080" alt="screenshot_3" src="https://github.com/user-attachments/assets/49c13686-ee43-41c5-971a-6442aa56e6a1" /> | <img width="1920" height="1080" alt="screenshot_4" src="https://github.com/user-attachments/assets/a0c17f27-5fdf-4576-a449-7c31a1f07bcf" /> |
+| <img width="1920" height="1080" alt="screenshot_3" src="https://github.com/user-attachments/assets/60cec433-993b-479f-9e14-9a453c3ec4d8" /> | <img width="1920" height="1080" alt="screenshot_4" src="https://github.com/user-attachments/assets/3147bc19-6cde-452c-9a3e-5c4e1765dea6" /> |
 
 ## Quick Start
 
