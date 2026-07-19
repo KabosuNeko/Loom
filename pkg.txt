@@ -16,14 +16,13 @@ chafa
 imagemagick
 feh
 xclip
-polkit-gnome
+lxqt-policykit
 gnome-keyring
 libsecret
 brightnessctl
 pipewire
 wireplumber
 pipewire-pulse
-lxappearance
 redshift
 fcitx5
 tmux
