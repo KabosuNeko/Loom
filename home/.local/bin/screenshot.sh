@@ -11,10 +11,11 @@ mkdir -p "$OUTDIR"
 FILE="$OUTDIR/$(date +%Y%m%d_%H%M%S).png"
 
 post(){
+    pkill -f clipmenud || true
     xclip -selection clipboard -t image/png -i "$FILE" && \
     notify-send -i "$FILE" "Screenshot Saved" "$(basename "$FILE")"
+    ( sleep 1 && clipmenud ) & disown
 }
-
 case "${1:-}" in
     full)
         import -window root "$FILE" && post
