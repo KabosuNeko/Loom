@@ -1,33 +1,23 @@
-#!/usr/bin/env bash
-# wallpaper.sh — wallpaper picker & applier for dwm / X11
-# Uses dmenu, feh, pywal, xrdb. Auto-updates ~/.xinitrc.
-set -euo pipefail
+#!/bin/sh
+set -eu
 
-# ─── Config ──────────────────────────────────────────────────────────────
 WALLPAPER_DIR="${WALLPAPER_DIR:-$HOME/Pictures/Wallpapers}"
 CACHE_DIR="$HOME/.cache/wallpaper"
 CACHE_LAST="$CACHE_DIR/last"
 XINITRC="$HOME/.xinitrc"
 
-# Block markers for managed section in .xinitrc
 BLOCK_START="# >>> wallpaper.sh managed >>>"
 BLOCK_END="# <<< wallpaper.sh managed <<<"
 
-# ─── Dependency check ────────────────────────────────────────────────────
-# Đã đổi rofi thành dmenu
-REQUIRED_DEPS=(dmenu feh wal awk sed find)
-missing=()
-
-for dep in "${REQUIRED_DEPS[@]}"; do
-    command -v "$dep" &>/dev/null || missing+=("$dep")
+missing=''
+for dep in dmenu feh wal awk sed find; do
+    command -v "$dep" >/dev/null 2>&1 || missing="$missing $dep"
 done
 
-if ((${#missing[@]})); then
-    printf "ERROR: missing required dependencies: %s\n" "${missing[*]}" >&2
+if [ -n "$missing" ]; then
+    printf "ERROR: missing required dependencies:%s\n" "$missing" >&2
     exit 1
 fi
-
-# ─── Helpers ─────────────────────────────────────────────────────────────
 
 usage() {
     cat <<EOF
@@ -45,11 +35,10 @@ EOF
     exit 0
 }
 
-# Apply wallpaper: feh → wal (templates + deploy hook)
 apply_wallpaper() {
-    local img="$1"
+    img="$1"
 
-    if [[ ! -f "$img" ]]; then
+    if [ ! -f "$img" ]; then
         printf "ERROR: file not found: %s\n" "$img" >&2
         exit 1
     fi
@@ -68,13 +57,11 @@ apply_wallpaper() {
     printf "Wallpaper applied: %s\n" "$img"
 }
 
-# ─── .xinitrc management ────────────────────────────────────────────────
 update_xinitrc() {
-    local img="$1"
+    img="$1"
 
-    [[ -f "$XINITRC" ]] || return 0
+    [ -f "$XINITRC" ] || return 0
 
-    local block
     block="$(printf '%s\n%s\n%s\n%s' \
         "$BLOCK_START" \
         "feh --bg-fill \"$img\" &" \
@@ -90,12 +77,12 @@ update_xinitrc() {
         ' "$XINITRC" > "$XINITRC.tmp"
         mv -- "$XINITRC.tmp" "$XINITRC"
     elif grep -qE '^[[:space:]]*(feh --bg-fill|wal -i)' "$XINITRC"; then
-        local first_feh=true
+        first_feh='true'
         while IFS= read -r line; do
-            if [[ "$line" =~ ^[[:space:]]*feh\ --bg-fill ]] && $first_feh; then
+            if echo "$line" | grep -q '^[[:space:]]*feh --bg-fill' && [ "$first_feh" = 'true' ]; then
                 printf '%s\n' "$block"
-                first_feh=false
-            elif [[ "$line" =~ ^[[:space:]]*wal\ -i ]]; then
+                first_feh='false'
+            elif echo "$line" | grep -q '^[[:space:]]*wal -i'; then
                 continue
             else
                 printf '%s\n' "$line"
@@ -114,48 +101,41 @@ update_xinitrc() {
     fi
 }
 
-# ─── Dmenu picker ────────────────────────────────────────────────────────
 pick_wallpaper() {
-    if [[ ! -d "$WALLPAPER_DIR" ]]; then
+    if [ ! -d "$WALLPAPER_DIR" ]; then
         printf "ERROR: wallpaper directory not found: %s\n" "$WALLPAPER_DIR" >&2
         exit 1
     fi
 
-    local -a names=()
-    while IFS= read -r -d '' f; do
-        names+=("$(basename "$f")")
-    done < <(find "$WALLPAPER_DIR" -maxdepth 1 -type f \
+    names=$(find "$WALLPAPER_DIR" -maxdepth 1 -type f \
         \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \
-           -o -iname '*.webp' -o -iname '*.bmp' \) -print0 | sort -z)
+           -o -iname '*.webp' -o -iname '*.bmp' \) 2>/dev/null | sort | sed 's|.*/||')
 
-    if ((${#names[@]} == 0)); then
+    if [ -z "$names" ]; then
         printf "ERROR: no images found in %s\n" "$WALLPAPER_DIR" >&2
         exit 1
     fi
-    local choice
-    choice=$(printf '%s\n' "${names[@]}" | dmenu -i -c -l 10 -p "Wallpaper") || exit 0
 
-    [[ -z "$choice" ]] && exit 0
+    choice=$(printf '%s\n' "$names" | dmenu -i -c -l 10 -p "Wallpaper") || exit 0
+
+    [ -z "$choice" ] && exit 0
 
     apply_wallpaper "$WALLPAPER_DIR/$choice"
 }
 
-# ─── Restore last wallpaper ─────────────────────────────────────────────
 restore_wallpaper() {
-    if [[ ! -f "$CACHE_LAST" ]]; then
+    if [ ! -f "$CACHE_LAST" ]; then
         printf "ERROR: no cached wallpaper found at %s\n" "$CACHE_LAST" >&2
         exit 1
     fi
 
-    local last
-    last=$(<"$CACHE_LAST")
+    last=$(cat "$CACHE_LAST")
     apply_wallpaper "$last"
 }
 
-# ─── Main ────────────────────────────────────────────────────────────────
 case "${1:-}" in
     --apply)
-        [[ -z "${2:-}" ]] && { printf "ERROR: --apply requires a path\n" >&2; exit 1; }
+        [ -z "${2:-}" ] && { printf "ERROR: --apply requires a path\n" >&2; exit 1; }
         apply_wallpaper "$2"
         ;;
     --restore)

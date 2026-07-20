@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 OPTIONS=" Lock\n󰒲 Suspend\n󰤄 Hibernate\n Reboot\n⏻ PowerOff\n󰍃 LogOut"
 SELECTED=$(printf '%b' "$OPTIONS" | dmenu -i -c -l 6 -p "Power Menu:")
