@@ -71,7 +71,7 @@ static const struct arg args[] = {
 { run_command,   "%s",                           "cat /tmp/rectime 2>/dev/null" },
 { cpu_perc,      " ^C9^ %s%%^d^ ",              NULL },
 { ram_used,      "^C10^󰫗 %s^d^ ",                NULL },
-{ run_command,   "^C13^󰖐 %s^d^ ",                "curl -s 'wttr.in/?format=%t' 2>/dev/null"
+{ run_command,   "^C13^󰖐 %s^d^ ",                "curl -s 'wttr.in/?format=%t' 2>/dev/null" },
 { battery_perc,  "^C11^ %s%%^d^",               "BAT1" },
 { battery_state, "^C11^%s^d^ ",                  "BAT1" },
 { datetime,      "^C13^󰸗 %s^d^",                 "%d - %I:%M %p" },
