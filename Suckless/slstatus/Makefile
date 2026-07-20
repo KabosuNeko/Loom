@@ -7,10 +7,9 @@ include config.mk
 REQ = util
 COM =\
 	components/battery\
-	components/cat\
+	components/run_command\
 	components/cpu\
 	components/datetime\
-	components/keymap\
 	components/ram
 
 all: slstatus
