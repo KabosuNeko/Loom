@@ -27,14 +27,12 @@ redshift
 fcitx5
 tmux
 libnotify
-thunar
-thunar-archive-plugin
-thunar-volman
-file-roller
+pcmanfm
+udisks2
 gvfs
 gvfs-mtp
-tumbler
 ffmpegthumbnailer
+xarchiver
 7zip
 unrar
 unzip
