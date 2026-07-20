@@ -109,7 +109,7 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-c", "-l", "10", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *thunarcmd[]  = { "thunar", NULL };
+static const char *pcmancmd[]  = { "pcmanfm", NULL };
 static const char *firefoxcmd[] = { "firefox", NULL };
 static const char *clipboardcmd[]  = { "clipmenu", NULL };
 
@@ -149,7 +149,7 @@ static const Key keys[] = {
     { MODKEY,                       XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_w,      spawn,          {.v = firefoxcmd } },
 	{ MODKEY,             		    XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_e,      spawn,          {.v = thunarcmd } },
+	{ MODKEY,                       XK_e,      spawn,          {.v = pcmancmd } },
 	/* toggling the dwm bar */
 	{ MODKEY|Mod1Mask,              XK_b,      togglebar,      {0} },
 	/* moving between windows */
