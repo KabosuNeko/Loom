@@ -15,6 +15,9 @@ feh --bg-fill "/home/mibanh/Pictures/Wallpapers/sunset.jpg" &
 wal -n -o "$HOME/.config/wal/deploy.sh" -i "/home/mibanh/Pictures/Wallpapers/sunset.jpg"
 # <<< wallpaper.sh managed <<<
 
+xrdb -merge "$CACHE/colors.Xresources"
+[ -f "$CACHE/xrdb_extra" ] && xrdb -merge "$CACHE/xrdb_extra"
+
 picom &
 dunst &
 slstatus &
