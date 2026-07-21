@@ -68,11 +68,12 @@ static const struct arg args[] = {
     // uses https://dwm.suckless.org/patches/status2d patch ^c#[HEX]^ to set color and ^d^ to reset color
 
 /* function       format                          argument */
-{ run_command,   "%s",                           "cat /tmp/rectime 2>/dev/null" },
+{ cat,           "%s",                           "/tmp/rectime" },
 { cpu_perc,      " ^C9^ %s%%^d^ ",              NULL },
 { ram_used,      "^C10^󰫗 %s^d^ ",                NULL },
-{ run_command,   "^C13^󰖐 %s^d^ ",                "curl -s 'wttr.in/?format=%t' 2>/dev/null" },
+{ disk_perc,     "^C10^󰋊 %s%%^d^ ",              "/" },
+{ temp,          "^C10^ %s°C^d^ ",              "/sys/class/thermal/thermal_zone0/temp" },
 { battery_perc,  "^C11^ %s%%^d^",               "BAT1" },
 { battery_state, "^C11^%s^d^ ",                  "BAT1" },
-{ datetime,      "^C13^󰸗 %s^d^",                 "%d - %I:%M %p" },
+{ datetime,      "^C12^󰸗 %s^d^",                 "%A, %B %e,%l:%M%P" },
 };
