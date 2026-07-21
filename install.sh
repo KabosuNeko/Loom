@@ -161,6 +161,8 @@ else
     echo ":: Skipping suckless tools build."
 fi
 
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
 systemctl --user stop pipewire pipewire-pulse wireplumber 2>/dev/null || true
 
 pkill -x pipewire || true
