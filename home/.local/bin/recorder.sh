@@ -1,5 +1,7 @@
 #!/bin/sh
 
+mkdir -p "$HOME/Videos"
+
 record() {
   OUTPUT_FILE="$HOME/Videos/screencast_$(date +%F_%H-%M-%S).mp4"
 
