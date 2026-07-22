@@ -118,7 +118,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,           XK_j,      pushdown,       {0} },
 	{ MODKEY|ShiftMask,           XK_k,      pushup,         {0} },
 	/* Wallpaper switcher */
-	{ Mod1Mask,                       XK_w,      spawn,          SHCMD("$HOME/.local/bin/wallpaper") },
+	{ Mod1Mask,                       XK_w,      spawn,          SHCMD("~/.local/bin/wallpaper") },
 	/* Audio Keys */
     { 0, XF86XK_AudioRaiseVolume, spawn, SHCMD("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 2%+; notify-send -h string:x-canonical-private-synchronous:osd -t 1500 \"     Volume: $(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}')%\"") },
     { 0, XF86XK_AudioLowerVolume, spawn, SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-; notify-send -h string:x-canonical-private-synchronous:osd -t 1500 \"     Volume: $(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}')%\"") },
