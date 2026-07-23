@@ -40,4 +40,4 @@ zip
 mpv
 python-pywal16
 clipmenu
-firefox
+brave-origin

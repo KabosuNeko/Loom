@@ -64,7 +64,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "firefox",  NULL,       NULL,       0,            0,           -1 },
+	{ "brave-origin",  NULL,       NULL,       0,            0,           -1 },
 };
 
 /* layout(s) */
@@ -110,7 +110,7 @@ static const Layout layouts[] = {
 static const char *dmenucmd[] = { "dmenu_run", "-c", "-l", "10", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *pcmancmd[]  = { "pcmanfm", NULL };
-static const char *firefoxcmd[] = { "firefox", NULL };
+static const char *braveorigincmd[] = { "brave-origin", NULL };
 static const char *clipboardcmd[]  = { "clipmenu", NULL };
 
 static const Key keys[] = {
@@ -147,7 +147,7 @@ static const Key keys[] = {
 	/* My binds for spawning apps */
     { MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
     { MODKEY,                       XK_f,      togglefullscr,  {0} },
-	{ MODKEY,                       XK_w,      spawn,          {.v = firefoxcmd } },
+	{ MODKEY,                       XK_w,      spawn,          {.v = braveorigincmd } },
 	{ MODKEY,             		    XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_e,      spawn,          {.v = pcmancmd } },
 	/* toggling the dwm bar */
