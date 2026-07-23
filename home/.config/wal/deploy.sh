@@ -11,4 +11,6 @@ CACHE="${cache_dir:-$HOME/.cache/wal}"
 xrdb -merge "$CACHE/colors.Xresources"
 [ -f "$CACHE/xrdb_extra" ] && xrdb -merge "$CACHE/xrdb_extra"
 
-command -v xdotool >/dev/null 2>&1 && xdotool key --clearmodifiers super+F5
+if pidof -x dwm >/dev/null; then
+    command -v xdotool >/dev/null 2>&1 && xdotool key --clearmodifiers super+F5
+fi
