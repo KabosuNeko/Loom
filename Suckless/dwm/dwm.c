@@ -520,10 +520,17 @@ void buttonpress(XEvent *e) {
     focus(NULL);
   }
   if (ev->window == selmon->barwin) {
+    unsigned int occ = 0;
+    for (c = selmon->clients; c; c = c->next)
+      occ |= c->tags;
     i = x = 0;
-    do
+    for (i = 0; i < LENGTH(tags); i++) {
+      if (!(occ & 1 << i || selmon->tagset[selmon->seltags] & 1 << i))
+        continue;
+      if (ev->x < x + TEXTW(tags[i]))
+        break;
       x += TEXTW(tags[i]);
-    while (ev->x >= x && ++i < LENGTH(tags));
+    }
     if (i < LENGTH(tags)) {
       click = ClkTagBar;
       arg.ui = 1 << i;
