@@ -14,7 +14,7 @@ My personal suckless builds and dwm dots files. This setup is built around **dwm
 
 | <img width="1920" height="1080" alt="screenshot_1" src="https://github.com/user-attachments/assets/b0f7ade7-7437-43dd-947a-5784f9c929ea" /> | <img width="1920" height="1080" alt="screenshot_2" src="https://github.com/user-attachments/assets/0343fbfe-e674-4f67-bf38-4c8a29d8dd1a" /> |
 |---|---|
-| <img width="1920" height="1080" alt="screenshot_3" src="https://github.com/user-attachments/assets/a3f62c22-6925-4c13-9c87-8d99e06acf11" /> | <img width="1920" height="1080" alt="screenshot_4" src="https://github.com/user-attachments/assets/367a15d5-159a-4070-a246-4d5dd472baf0" /> |
+| <img width="1920" height="1080" alt="screenshot_3" src="https://github.com/user-attachments/assets/a3f62c22-6925-4c13-9c87-8d99e06acf11" /> | <img width="1920" height="1080" alt="screenshot_4" src="https://github.com/user-attachments/assets/41649f7f-14e4-4f94-b581-3924b8264e69" /> |
 
 ## Quick Start
 
