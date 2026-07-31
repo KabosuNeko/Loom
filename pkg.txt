@@ -40,4 +40,8 @@ zip
 mpv
 python-pywal16
 clipmenu
+gtk-engine-murrine
+gruvbox-gtk-theme-git
+gruvbox-plus-icon-theme
+bibata-cursor-theme
 firefox
