@@ -162,6 +162,9 @@ else
 fi
 
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.interface gtk-theme 'Gruvbox-Orange-Dark'
+gsettings set org.gnome.desktop.interface icon-theme 'Gruvbox-Plus-Dark'
+gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Amber'
 
 systemctl --user stop pipewire pipewire-pulse wireplumber 2>/dev/null || true
 
