@@ -21,9 +21,10 @@ My personal suckless builds and dwm dots files. This setup is built around **dwm
 ```bash
 # Clone the repo
 git clone https://github.com/KabosuNeko/Loom.git
-cd Loom
+cd ~/Loom
 
 # Run the installer (reads pkg.txt for dependencies)
+chmod +x install.sh
 ./install.sh
 ```
 
