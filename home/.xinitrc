@@ -24,5 +24,6 @@ redshift &
 lxqt-policykit-agent &
 xautolock -time 10 -notify 10 -notifier "notify-send 'Locking in 10s'" -locker "slock" -detectsleep &
 xset r rate 200 35
+xsetroot -cursor_name left_ptr &
 
 exec dwm
